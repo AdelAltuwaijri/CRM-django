@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import reverse_lazy
-from apps.common.views import HomeView,SignUp, DashboardView
+from apps.common.views import HomeView,SignUp, DashboardView,ProfileUpdateView,ProfileView
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -55,4 +55,11 @@ urlpatterns = [
              template_name='common/password-reset/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+    path('profile_update',ProfileUpdateView.as_view(),name='update_profile'),
+    path('profile',ProfileView.as_view(),name='profile'),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

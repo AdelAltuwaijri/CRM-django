@@ -41,13 +41,14 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'django_cleanup', # This library is used with profile in which ensure that every user have only one image uploaded on the server
 ]
 # Tell crispy-forms package that we want to use bootstrap4 not bootstrap3
 CRISPY_TEMPLATE_PACK = "bootstrap4" 
 
 LOCAL_APPS = [ 
         'apps.common',
-        'apps.userprofile',
+      
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -142,3 +143,4 @@ except ImportError:
 LOGIN_REDIRECT_URL = "dashboard"
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+

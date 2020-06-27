@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-3 my-5">
+      <img src="{{user.profile.profile_image.url}}" class="rounded float-right" height="300px" width="300px">
+    </div>
+
+    <div class="card col-lg-5 o-hidden shadow-lg border-0 my-5">
+      <div class="card-body">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <p><strong> User name : </strong> {{user.username }}</p>
+        <p><strong> Email : </strong> {{user.email }}</p>
+        <p><strong> Birth date : </strong> {{user.profile.birth_date }}</p>
+        <p><strong> Bio : </strong> {{user.profile.bio }}</p>
+<a href="{% url 'update_profile' %}" class="btn btn-sm btn-primary shadow-sm"> Edit Profile</a>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock content %}
